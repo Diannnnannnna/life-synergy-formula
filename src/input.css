@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@layer base {
+    :root {
+      --green: #001A18;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 6rem;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      scrollbar-width: none; /* This stays as plain CSS */
+    }
+    body{
+        font-family: 'Catamaran', sans-serif;
+    }
+    .product-price{
+        font-family: 'Inter', sans-serif;
+    }
+    .promo-cap{
+      font-family: 'Inter', sans-serif;
+    }
+    .quantity{
+      font-family: 'Inter', sans-serif;
+    }
+
+  }
+  @layer components {
+    input[type="range"]::-webkit-slider-thumb{
+      height: 9px;
+      width: 9px;
+      border-radius: 50%;
+      pointer-events: auto;
+      -webkit-appearance: none;
+      background-color: #32B4A6;
+      box-shadow: 0 0 0 4px rgba(232, 232, 232, 0.99);
+  }
+  input[type="range"]::-moz-range-thumb{
+      height: 17px;
+      width: 17px;
+      border: none;
+      border-radius: 50%;
+      pointer-events: auto;
+      -moz-appearance: none;
+      background-color: #32B4A6;
+  }
+  }
+  

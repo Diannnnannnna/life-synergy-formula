@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products-Life Formula Synergy </title>
+      <!-- Link for FontStyle -->
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Catamaran:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+      <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-BxMc57kVuJbl9JXlMwETr7FpV7XeHv5e1AeuQ4GoXf0+qqd1iyZ8xD63Oe8DJZ5r8wOovWrVZyavU46T2gQQ2g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      />
+      <!-- Link for css -->
+      <link href="./output.css" rel="stylesheet">
+      <!-- Link for script -->
+      <script src="https://unpkg.com/lucide@latest"></script>
+      <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="max-w-7xl font-catamaran">
+    <!-- Header -->
+    <header x-data="{ open: false }" class="w-screen relative bg-white py-4 shadow-md z-[1000]">
+      <div class="container mx-auto px-20 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+              <img src="assets/logo.png" class="w-10 h-10 md:w-16 md:h-16" />
+              <a href="#" class="text-xl md:text-3xl font-bold leading-none text-black">
+              Life Formula<br />Synergy, Inc.
+              </a>
+          </div>
+          <!-- Nav links -->
+          <nav class="hidden lg:flex text-lg items-center mr-7">
+              <a href="index.html" class="text-lg text-black pl-8 font-light hover:text-[#32B4A6]">Home</a>
+              <a href="about-us.html" class="text-lg text-black pl-8 font-light hover:text-[#32B4A6]">About</a>
+              <a href="index.html?#contact" class="text-lg text-black pl-8 font-light hover:text-[#32B4A6]">Contact</a>
+          
+              <div class="relative pl-8 pb-2 mt-2 group">
+                  <a href="#" class="flex items-center text-lg text-black font-light hover:text-[#32B4A6]">
+                  Shop Now <i data-lucide="chevron-down" class="w-4 h-4 ml-4 text-black hover:text-[#32B4A6]"></i>
+                  </a>
+                  <div class="absolute hidden group-hover:block bg-white w-48 shadow-lg rounded-md z-[1000] p-6 space-y-4 mt-1">
+                      <a href="products.html" class="block font-light text-black hover:text-[#32B4A6]">All Products</a>
+                      <a href="#" class="block text-black font-light hover:text-[#32B4A6]">Wellness Products</a>
+                      <a href="#" class="block text-black font-light hover:text-[#32B4A6]">Health Care</a>
+                      <a href="#" class="block text-black font-light hover:text-[#32B4A6]">Beauty Care</a>
+                      <a href="#" class="block text-black font-light hover:text-[#32B4A6]">Packages</a>
+                      <a href="#" class="block text-black font-light hover:text-[#32B4A6]">Special Product</a>
+                  </div>
+              </div>
+          </nav>
+          <!-- Nav Icons -->
+          <div class="hidden lg:flex gap-11 items-center">
+              <a href="#" class="text-2xl text-black hover:text-[#32B4A6]"><i data-lucide="search"></i></a>
+              <a href="cart.html" class="text-2xl text-black hover:text-[#32B4A6]"><i data-lucide="shopping-cart"></i></a>
+              <!-- Profile -->
+              <div class="relative" x-data="{ open: false }">
+
+                  <!-- Profile Icon Button -->
+                  <a href="#" 
+                  @click.prevent="open = !open" 
+                  class="text-2xl text-black hover:text-[#32B4A6]">
+                      <i data-lucide="user"></i>
+                  </a>
+
+                  <!-- Dropdown Panel -->
+                  <div 
+                      x-show="open"
+                      @click.away="open = false"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 translate-y-1"
+                      x-transition:enter-end="opacity-100 translate-y-0"
+                      x-transition:leave="transition ease-in duration-150"
+                      x-transition:leave-start="opacity-100 translate-y-0"
+                      x-transition:leave-end="opacity-0 translate-y-1"
+                      class="absolute bg-white p-2 shadow-lg rounded z-[1000] pt-4 mt-2 right-0 w-64"
+                  >
+                      <div class="flex gap-2.5 items-center border-b border-gray-300 p-2">
+                          <div class="w-12 h-12 rounded-full bg-[#D9D9D9]"></div>
+                          <div>
+                              <p class="text-base text-nowrap">User Name</p>
+                              <p class="text-sm text-[#9B9B9B] -mt-1">@gmail.com</p>
+                          </div>
+                      </div>
+
+                      <div class="mt-2">
+                          <div class="px-2">
+                              <a href="profile.html" class="block text-black hover:text-[#32B4A6] text-base mb-1">Profile</a>
+                              <a href="profile.html" class="block text-black hover:text-[#32B4A6] text-base mb-1">Orders</a>
+                          </div>
+                          <div class="w-full h-[1px] bg-gray-300 my-2"></div>
+                          <a href="#" class="flex items-center text-black hover:text-[#32B4A6] text-lg">
+                              <i data-lucide="log-out" class="w-4 h-4 text-[#9B9B9B] mr-2"></i>Logout
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- Menu Button -->
+          <button @click="open = true" class="lg:hidden text-black text-3xl focus:outline-none">
+              <i data-lucide="menu"></i>
+          </button>
+      </div>
+      <!-- Mobile Nav -->
+      <div 
+          x-show="open"
+          @click.away="open = false"
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 transform -translate-y-2"
+          x-transition:enter-end="opacity-100 transform translate-y-0"
+          x-transition:leave="transition ease-in duration-150"
+          x-transition:leave-start="opacity-100 transform translate-y-0"
+          x-transition:leave-end="opacity-0 transform -translate-y-2"
+          class="absolute top-full left-0 mt-2 w-full px-28 flex flex-col space-y-4 z-[1050]"
+          x-data="{
+              current: window.location.pathname
+          }">
+          <div class="bg-white shadow-lg rounded-md border border-gray-300 w-full p-6 flex flex-col">
+              
+              <a @click="open = false" 
+              href="index.html" 
+              :class="current.includes('index.html') ? 'bg-[#32B4A6] text-white p-2 rounded' : 'text-black p-2 rounded hover:bg-[#c6e2df] hover:text-white'">
+              Home
+              </a>
+      
+              <a @click="open = false" 
+              href="about-us.html"
+              :class="current.includes('about-us.html') ? 'bg-[#32B4A6] text-white p-2 rounded' : 'text-black p-2 rounded hover:bg-[#c6e2df] hover:text-white'">
+              About
+              </a>
+      
+              <a @click="open = false" 
+              href="index.html?#contact"
+              :class="current.includes('index.html?#contact') ? 'bg-[#32B4A6] text-white p-2 rounded' : 'text-black p-2 rounded hover:bg-[#c6e2df] hover:text-white'">
+              Contact
+              </a>
+      
+              <a @click="open = false" 
+              href="products.html"
+              :class="current.includes('products.html') ? 'bg-[#32B4A6] text-white p-2 rounded' : 'text-black p-2 rounded hover:bg-[#c6e2df] hover:text-white'">
+              Shop Now
+              </a>
+      
+              <a @click="open = false" 
+              href="cart.html"
+              :class="current.includes('cart.html') ? 'bg-[#32B4A6] text-white p-2 rounded' : 'text-black p-2 rounded hover:bg-[#c6e2df] hover:text-white'">
+              Cart
+              </a>
+      
+              <a @click="open = false" 
+              href="profile.html"
+              :class="current.includes('profile.html') ? 'bg-[#32B4A6] text-white p-2 rounded' : 'text-black p-2 rounded hover:bg-[#c6e2df] hover:text-white'">
+              Profile
+              </a>
+      
+              <a @click="open = false" 
+              href="#"
+              class="text-black p-2 rounded hover:bg-[#c6e2df] hover:text-white">
+              Logout
+              </a>
+      
+          </div>  
+      </div>
+    </header>
+
+    <!-- Product Page -->
+    <section id="productpage" class="bg-white w-screen bg-cover bg-center">
+      <div class="container mx-auto px-20 py-20">
+        <!-- Breadcrumbs -->
+        <nav class="text-base font-light text-[#9B9B9B]">
+          <a href="index.html" class="no-underline text-[#9B9B9B] hover:underline">HOME</a> /
+          <span class="active text-[#32B4A6]">ALL PRODUCTS</span>
+        </nav>
+      
+        <div class="products-container w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-18.5 gap-7.5 mb-2">
+          <!-- Sidebar (Left Column) -->
+          <div class="product-page flex gap-8 items-start">
+            <aside class="sidebar bg-white w-full p-4 rounded-lg shadow-md">
+              <p class="mb-4"><a href="#" class="text-base text-black font-light no-underline">All Products</a></p>
+              <div class="divider h-[0.5px] bg-[#9B9B9B] w-full my-2"></div>
+              
+              <!-- Category Filter -->
+              <div x-data="{
+                open: true,
+                checkScreen() {
+                    this.open = window.innerWidth >= 640;  // auto-close if below md
+                  }
+                }"
+                x-init="checkScreen(); window.addEventListener('resize', () => checkScreen())"
+                class="filter flex flex-col">
+                <h4 @click="open = !open" class="category-toggle flex justify-between font-light items-center text-base cursor-pointer">
+                  Category 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9b9b9b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                    :class="{ 'rotate-180': open }" class="transition-transform duration-300">
+                    <path d="m6 9 6 6 6-6"/>
+                  </svg>
+                </h4>
+                <ul x-show="open" x-transition class="submenu list-none pl-4 mt-2">
+                  <li class="py-1.5"><a href="#" class="text-base font-light text-black no-underline">Wellness Products</a></li>
+                  <li class="py-1.5"><a href="#" class="text-base font-light text-black no-underline">Health Care</a></li>
+                  <li class="py-1.5"><a href="#" class="text-base font-light text-black no-underline">Beauty Care</a></li>
+                  <li class="py-1.5"><a href="#" class="text-base font-light text-black no-underline">Packages</a></li>
+                  <li class="py-1.5"><a href="#" class="text-base font-light text-black no-underline">Special Products</a></li>
+                </ul>
+              </div>
+              <div class="divider h-[0.5px] bg-[#9B9B9B] w-full my-2"></div>
+              <!-- Price Range Filter -->
+              <div x-data="{
+                open: true,
+                checkScreen() {
+                    this.open = window.innerWidth >= 640;  // auto-close if below md
+                  }
+                }"
+                x-init="checkScreen(); window.addEventListener('resize', () => checkScreen())"
+                class="filter flex flex-col">
+                <h4 @click="open = !open" class="price-toggle flex justify-between items-center text-base font-light cursor-pointer">
+                  Price Range 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9b9b9b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    :class="{ 'rotate-180': open }" class="transition-transform duration-300">
+                    <path d="m6 9 6 6 6-6"/>
+                  </svg>
+                </h4>
+                <div x-show="open" x-transition class="px-2">
+                  <div class="range-slider w-full mt-8">
+                    <div class="slider relative h-0.5 rounded bg-[#9B9B9B] w-full">
+                      <div class="progress absolute left-[25%] right-[25%] h-0.5 rounded bg-[#32B4A6]"></div>
+                    </div>
+                    <div class="range-input relative">
+                      <input type="range" class="range-min absolute -top-0.5 w-full h-0.5 pointer-events-none appearance-none bg-none border-none" min="0" max="10000" value="2500">
+                      <input type="range" class="range-max absolute -top-0.5 w-full h-0.5 pointer-events-none appearance-none bg-none border-none" min="0" max="10000" value="7500">
+                    </div>
+                  </div>
+                  <div class="price-filter w-full gap-2 flex mt-8 mb-3">
+                    <div class="fields flex gap-2">
+                      <div class="field">
+                        <input type="number" class="input-min w-full h-7 font-light bg-[#F4F4F4] rounded pl-2" value="2500">
+                      </div>
+                      <div class="seperator flex items-center justify-center text-base">-</div>
+                      <div class="field">
+                        <input type="number" class="input-max w-full h-7 font-light bg-[#F4F4F4] rounded-4 pl-2" value="7500">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="divider h-[0.5px] bg-[#9B9B9B] w-full my-2"></div>
+              <!-- Collection Filter -->
+              <div x-data="{
+                open: true,
+                checkScreen() {
+                    this.open = window.innerWidth >= 640;  // auto-close if below md
+                  }
+                }"
+                x-init="checkScreen(); window.addEventListener('resize', () => checkScreen())"
+                class="filter flex flex-col">
+                <h4 @click="open = !open" class="collection-toggle flex justify-between font-light items-center text-base cursor-pointer">
+                  Collection 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9b9b9b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    :class="{ 'rotate-180': open }" class="transition-transform duration-300">
+                    <path d="m6 9 6 6 6-6"/>
+                  </svg>
+                </h4>
+                <ul x-show="open" x-transition class="submenu list-none pl-4 mt-2">
+                  <li class="py-1.5"><a href="#" class="text-base font-light text-black no-underline">Ozonizers</a></li>
+                  <li class="py-1.5"><a href="#" class="text-base font-light text-black no-underline">Synergy Accessories</a></li>
+                  <li class="py-1.5"><a href="#" class="text-base font-light text-black no-underline">Wellness & Oral Care</a></li>
+                  <li class="py-1.5"><a href="#" class="text-base font-light text-black no-underline">Beverages</a></li>
+                  <li class="py-1.5"><a href="#" class="text-base font-light text-black no-underline">Vivache Fragrances</a></li>
+                </ul>
+              </div>
+              <div class="divider h-[0.5px] bg-[#9B9B9B] w-full my-2"></div>
+              <!-- Featured Products Filter -->
+              <div x-data="{
+                open: true,
+                checkScreen() {
+                    this.open = window.innerWidth >= 640;  // auto-close if below md
+                  }
+                }"
+                x-init="checkScreen(); window.addEventListener('resize', () => checkScreen())"
+                class="filter flex flex-col">
+                <h4 @click="open = !open" class="featured-toggle flex justify-between items-center font-light text-base cursor-pointer">
+                  Featured Products 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9b9b9b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    :class="{ 'rotate-180': open }" class="transition-transform duration-300">
+                    <path d="m6 9 6 6 6-6"/>
+                  </svg>
+                </h4>
+                <ul x-show="open" x-transition class="submenu list-none pl-4 mt-2">
+                  <li class="py-1.5"><a href="#" class="text-base font-light text-black no-underline">Ozonizer 2c</a></li>
+                  <li class="py-1.5"><a href="#" class="text-base font-light text-black no-underline">Synergy Bracelet</a></li>
+                  <li class="py-1.5"><a href="#" class="text-base font-light text-black no-underline">Premiera Plunge</a></li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+         
+          <!-- Products Section (Right Side) -->
+          <div class="products-section md:col-span-2 lg:col-span-3 flex-shrink-0">
+              <div class="applied-filters md:flex items-center font-light text-base font-sans -mb-7">
+                  <span>Applied Filters:</span>
+                  <div class="filter-tag flex items-center bg-white rounded-full py-1 px-3 md:ml-4.5 shadow-md text-base cursor-pointer" style="width: 110px; height: 33px;">
+                    Ozonizer
+                    <span class="close-btn ml-2 text-xl font-bold text-gray-500 cursor-pointer hover:text-black">&times;</span>
+                  </div>
+              </div>
+      
+              <!-- Products -->
+              <div class="products1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center mt-12">
+                <!-- Product Card 1 -->
+                <div class="product-card w-full mt-1.5 text-left overflow-hidden group cursor-pointer" onclick="window.location.href='product-details.html'">
+                    <div class="product-image11 relative">
+                      <img src="assets/product1.png" alt="Product Image" class="w-full h-[240px] xl:h-[317px] rounded mb-4 block">
+                        <!-- Hover Section -->
+                        <div class="hover-section absolute inset-0 bg-[rgba(0,0,0,0.4)] flex flex-col items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out rounded">
+                          <div class="circle-buttons absolute top-5 right-4 flex flex-col gap-4">
+                            <button class="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer shadow-md transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-3">
+                                <i data-lucide="heart" class="w-5 h-5"></i>
+                            </button>
+                            
+                            <button class="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer shadow-md transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-3">
+                                <i data-lucide="eye" class="w-5 h-5"></i>
+                            </button>
+                          </div>
+                          <div class="add-to-cart text-white text-xs sm:text-base bg-[#32B4A6] hover:bg-[#3F3F3F] py-4 text-center w-full rounded-b mt-auto cursor-pointer transition-bg duration-300 ease">
+                              ADD TO CART
+                          </div>
+                        </div>
+
+                    </div>
+                    <div class="details flex justify-between w-full">
+                      <p class="product-name text-sm sm:text-lg font-light">Product Name</p>
+                      <p class="product-price text-[#32B4A6] text-sm sm:text-lg font-semibold self-end font-inter">₱0.00</p>
+                    </div>
+                    <p class="product-type text-[#9B9B9B] text-xs sm:text-base mt-1">Type of Product</p>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card w-full mt-1.5 text-left overflow-hidden group cursor-pointer" onclick="window.location.href='product-details.html'">
+                    <div class="product-image11 relative">
+                      <img src="assets/product1.png" alt="Product Image" class="w-full h-[240px] xl:h-[317px] rounded mb-4 block">
+                        <!-- Hover Section -->
+                        <div class="hover-section absolute inset-0 bg-[rgba(0,0,0,0.4)] flex flex-col items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out rounded">
+                          <div class="circle-buttons absolute top-5 right-4 flex flex-col gap-4">
+                            <button class="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer shadow-md transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-3">
+                                <i data-lucide="heart" class="w-5 h-5"></i>
+                            </button>
+                            
+                            <button class="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer shadow-md transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-3">
+                                <i data-lucide="eye" class="w-5 h-5"></i>
+                            </button>
+                          </div>
+                          <div class="add-to-cart text-white text-xs sm:text-base bg-[#32B4A6] hover:bg-[#3F3F3F] py-4 text-center w-full rounded-b mt-auto cursor-pointer transition-bg duration-300 ease">
+                              ADD TO CART
+                          </div>
+                        </div>
+
+                    </div>
+                    <div class="details flex justify-between w-full">
+                      <p class="product-name text-sm sm:text-lg font-light">Product Name</p>
+                      <p class="product-price text-[#32B4A6] text-sm sm:text-lg font-semibold self-end font-inter">₱0.00</p>
+                    </div>
+                    <p class="product-type text-[#9B9B9B] text-xs sm:text-base mt-1">Type of Product</p>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="product-card w-full mt-1.5 text-left overflow-hidden group cursor-pointer" onclick="window.location.href='product-details.html'">
+                  <div class="product-image11 relative">
+                    <img src="assets/product1.png" alt="Product Image" class="w-full h-[240px] xl:h-[317px] rounded mb-4 block">
+                      <!-- Hover Section -->
+                      <div class="hover-section absolute inset-0 bg-[rgba(0,0,0,0.4)] flex flex-col items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out rounded">
+                        <div class="circle-buttons absolute top-5 right-4 flex flex-col gap-4">
+                          <button class="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer shadow-md transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-3">
+                                <i data-lucide="heart" class="w-5 h-5"></i>
+                          </button>
+                          
+                          <button class="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer shadow-md transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-3">
+                              <i data-lucide="eye" class="w-5 h-5"></i>
+                          </button>
+                        </div>
+                        <div class="add-to-cart text-white text-xs sm:text-base bg-[#32B4A6] hover:bg-[#3F3F3F] py-4 text-center w-full rounded-b mt-auto cursor-pointer transition-bg duration-300 ease">
+                            ADD TO CART
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="details flex justify-between w-full">
+                      <p class="product-name text-sm sm:text-lg font-light">Product Name</p>
+                      <p class="product-price text-[#32B4A6] text-sm sm:text-lg font-semibold self-end font-inter">₱0.00</p>
+                    </div>
+                    <p class="product-type text-[#9B9B9B] text-xs sm:text-base mt-1">Type of Product</p>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card w-full mt-1.5 text-left overflow-hidden group cursor-pointer" onclick="window.location.href='product-details.html'">
+                    <div class="product-image11 relative">
+                      <img src="assets/product1.png" alt="Product Image" class="w-full h-[240px] xl:h-[317px] rounded mb-4 block">
+                        <!-- Hover Section -->
+                        <div class="hover-section absolute inset-0 bg-[rgba(0,0,0,0.4)] flex flex-col items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out rounded">
+                          <div class="circle-buttons absolute top-5 right-4 flex flex-col gap-4">
+                            <button class="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer shadow-md transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-3">
+                                <i data-lucide="heart" class="w-5 h-5"></i>
+                            </button>
+                            
+                            <button class="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer shadow-md transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-3">
+                                <i data-lucide="eye" class="w-5 h-5"></i>
+                            </button>
+                          </div>
+                          <div class="add-to-cart text-white text-xs sm:text-base bg-[#32B4A6] hover:bg-[#3F3F3F] py-4 text-center w-full rounded-b mt-auto cursor-pointer transition-bg duration-300 ease">
+                              ADD TO CART
+                          </div>
+                        </div>
+
+                    </div>
+                    <div class="details flex justify-between w-full">
+                      <p class="product-name text-sm sm:text-lg font-light">Product Name</p>
+                      <p class="product-price text-[#32B4A6] text-sm sm:text-lg font-semibold self-end font-inter">₱0.00</p>
+                    </div>
+                    <p class="product-type text-[#9B9B9B] text-xs sm:text-base mt-1">Type of Product</p>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="product-card w-full mt-1.5 text-left overflow-hidden group cursor-pointer" onclick="window.location.href='product-details.html'">
+                    <div class="product-image11 relative">
+                      <img src="assets/product1.png" alt="Product Image" class="w-full h-[240px] xl:h-[317px] rounded mb-4 block">
+                        <!-- Hover Section -->
+                        <div class="hover-section absolute inset-0 bg-[rgba(0,0,0,0.4)] flex flex-col items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out rounded">
+                          <div class="circle-buttons absolute top-5 right-4 flex flex-col gap-4">
+                            <button class="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer shadow-md transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-3">
+                                <i data-lucide="heart" class="w-5 h-5"></i>
+                            </button>
+                            
+                            <button class="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer shadow-md transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-3">
+                                <i data-lucide="eye" class="w-5 h-5"></i>
+                            </button>
+                          </div>
+                          <div class="add-to-cart text-white text-xs sm:text-base bg-[#32B4A6] hover:bg-[#3F3F3F] py-4 text-center w-full rounded-b mt-auto cursor-pointer transition-bg duration-300 ease">
+                              ADD TO CART
+                          </div>
+                        </div>
+
+                    </div>
+                    <div class="details flex justify-between w-full">
+                      <p class="product-name text-sm sm:text-lg font-light">Product Name</p>
+                      <p class="product-price text-[#32B4A6] text-sm sm:text-lg font-semibold self-end font-inter">₱0.00</p>
+                    </div>
+                    <p class="product-type text-[#9B9B9B] text-xs sm:text-base mt-1">Type of Product</p>
+                </div>
+
+                <!-- Product Card 6 -->
+                <div class="product-card w-full mt-1.5 text-left overflow-hidden group cursor-pointer" onclick="window.location.href='product-details.html'">
+                    <div class="product-image11 relative">
+                      <img src="assets/product1.png" alt="Product Image" class="w-full h-[240px] xl:h-[317px] rounded mb-4 block">
+                        <!-- Hover Section -->
+                        <div class="hover-section absolute inset-0 bg-[rgba(0,0,0,0.4)] flex flex-col items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out rounded">
+                          <div class="circle-buttons absolute top-5 right-4 flex flex-col gap-4">
+                            <button class="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer shadow-md transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-3">
+                                <i data-lucide="heart" class="w-5 h-5"></i>
+                            </button>
+                            
+                            <button class="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer shadow-md transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-3">
+                                <i data-lucide="eye" class="w-5 h-5"></i>
+                            </button>
+                          </div>
+                          <div class="add-to-cart text-white text-xs sm:text-base bg-[#32B4A6] hover:bg-[#3F3F3F] py-4 text-center w-full rounded-b mt-auto cursor-pointer transition-bg duration-300 ease">
+                              ADD TO CART
+                          </div>
+                        </div>
+
+                    </div>
+                    <div class="details flex justify-between w-full">
+                      <p class="product-name text-sm sm:text-lg font-light">Product Name</p>
+                      <p class="product-price text-[#32B4A6] text-sm sm:text-lg font-semibold self-end font-inter">₱0.00</p>
+                    </div>
+                    <p class="product-type text-[#9B9B9B] text-xs sm:text-base mt-1">Type of Product</p>
+                </div>
+              </div>    
+          </div>
+                   
+        </div>
+        <!-- Pagination -->
+        <div class="pagination flex items-center justify-end mt-12 mb-10 text-base">
+          <button class="prev-btn bg-white rounded border-0 px-4 py-2 m-[21px_8px] text-gray-400 cursor-pointer font-light text-xs sm:text-base shadow-md">
+            Previous
+          </button>
+          <div class="page-numbers flex gap-1 sm:gap-3.5">
+            <span class="page active text-center bg-[#DFF6F0] rounded text-xs sm:text-base font-light px-3 sm:px-5 py-2 cursor-pointer">1</span>
+            <span class="page text-center text-xs sm:text-base font-light px-3 sm:px-5 py-2 cursor-pointer">2</span>
+            <span class="page text-center text-xs sm:text-base font-light px-3 sm:px-5 py-2 cursor-pointer">3</span>
+            <span class="page text-center text-xs sm:text-base font-light px-3 sm:px-5 py-2 cursor-pointer">4</span>
+          </div>
+          <button class="next-btn bg-white rounded border-0 px-4 py-2 m-0_8px cursor-pointer text-xs sm:text-base font-light shadow-md">
+            Next
+          </button>
+        </div>
+      
+        <!-- Promo Section -->
+        <div class="promo-container sm:flex mb-2 rounded-lg text-white">
+          <img src="assets/promo.png" alt="Premiera Plunge Coffee" class="promo-image w-full sm:w-[150px] md:w-[200px] lg:w-[500px] rounded-t-lg sm:rounded-l-lg sm:rounded-t-none">
+          <div class="promo-details w-full p-10 lg:pt-15.5 bg-[#1a1a1a] rounded-b-lg sm:rounded-l-none sm:rounded-r-lg">
+            <h3 class="text-base lg:text-xl font-light">FIRST <span class="promo-cap">90</span> ONLY</h3>
+            <p class="mt-3 text-lg lg:text-2xl font-light leading-[1.19]">
+              Buy 1 take 1, 1 day <strong class="font-bold">BIG PROMO</strong> and free delivery within Pasig!
+            </p>
+            <button class="promo-button mt-3 w-36 h-11.5 bg-white text-black px-4 py-2 border-0 cursor-pointer rounded text-base lg:text-lg hover:bg-lightgray">
+              Grab it now
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Footer -->
+    <section class="bg-[#3F3F3F] w-screen">
+      <div class="container mx-auto px-20 pt-20 pb-4">
+          <div class="grid lg:grid-cols-2  gap-8">
+      
+              <!-- Left Side -->
+              <div>
+                  <div class="flex items-center gap-2">
+                      <img src="assets/logo.png" class="w-10 h-10 md:w-16 md:h-16" />
+                      <a href="#" class="text-xl md:text-3xl font-bold leading-none text-white">
+                      Life Formula<br />Synergy, Inc.
+                      </a>
+                  </div>
+                      <p class="text-white mt-2 text-xs sm:text-base font-light">Your Health, Your Wealth.</p>
+                      <p class="text-white mt-6 text-xs sm:text-base w-64 leading-[1.3] font-light">G5 ADB Avenue Tower, ADB Avenue, Ortigas Center, Pasig, Philippines</p>
+                      <h6 class="text-white mt-[23px] text-sm sm:text-lg font-medium">STAY CONNECTED</h6>
+                      <div class="mt-5 flex items-center gap-5">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook-icon lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube-icon lucide-youtube"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+                      </div>
+                  </div>
+      
+              <!-- Right Side -->
+              <div class="hidden md:grid md:grid-cols-4 mt-1.5 lg:-ml-42">
+          
+                  <!-- COMPANY -->
+                  <div class="flex flex-col">
+                      <h4 class="text-white text-lg mb-2.5 font-medium">COMPANY</h4>
+                      <a href="#" class="text-white text-base mb-1.5 font-light">About</a>
+                      <a href="#" class="text-white text-base mb-1.5 font-light">Contact</a>
+                  </div>
+          
+                  <!-- SHOP -->
+                  <div class="flex flex-col">
+                      <h4 class="text-white text-lg mb-2.5 font-medium">SHOP</h4>
+                      <a href="#" class="text-white text-base mb-1.5 font-light">Bestsellers</a>
+                      <a href="#" class="text-white text-base mb-1.5 font-light">Ozonizer 2c</a>
+                      <a href="#" class="text-white text-base mb-1.5 font-light">U White</a>
+                      <a href="#" class="text-white text-base mb-1.5 font-light">Ozonizer Necklace</a>
+                      <a href="#" class="text-white text-base mb-1.5 font-light">Premiera Plunge</a>
+                      <a href="#" class="text-white text-base mb-1.5 font-light">Coffee</a>
+                      <a href="#" class="text-white text-base mb-1.5 font-light">Auto Control Ozonizer</a>
+                  </div>
+          
+                  <!-- SUPPORT -->
+                  <div class="flex flex-col">
+                      <h4 class="text-white text-lg mb-2.5 font-medium">SUPPORT</h4>
+                      <a href="#" class="text-white text-base mb-1.5 font-light">Privacy Policy</a>
+                      <a href="#" class="text-white text-base mb-1.5 font-light leading-tight">Terms &<br />Conditions</a>
+                  </div>
+          
+                  <!-- PAYMENT -->
+                  <div>
+                      <h4 class="text-white text-lg mb-2.5 font-medium">PAYMENT METHODS</h4>
+                      <div class="grid grid-cols-5 gap-2">
+                          <img src="assets/mastercard.png" class="w-7 h-5 mt-2" alt="MasterCard" />
+                          <img src="assets/paymaya.png" class="w-8 h-9" alt="Visa" />
+                          <img src="assets/grabpay.png" class="w-16 h-9" alt="GrabPay" />
+                          <img src="assets/unionpay.png" class="w-7.5 h-8" alt="UnionPay" />
+                          <img src="assets/shopeepay.png" class="w-9 h-7.5" alt="Shopee" />
+                          <img src="assets/palawanpay.png" class="w-8 h-7.5" alt="Palawan" />
+                          <img src="assets/gcash.png" class="w-7.5 h-6.5" alt="GCash" />
+                          <img src="assets/wepay.png" class="w-7.5 h-6.5" alt="WePay" />
+                          <img src="assets/alipay.png" class="w-7.5 h-6.5" alt="Alipay" />
+                      </div>
+                  </div>          
+              </div>
+          </div>
+  
+          <!-- Bottom -->
+          <div class="w-full text-center pt-6 border-t border-white mt-6 text-xs sm:text-base font-light text-white">
+          Copyright © 2025 Life Formula Synergy, Inc. All Rights Reserved.
+          </div>
+
+      </div>
+    </section>
+    
+</body>
+<script>
+  lucide.createIcons();
+</script>
+</html>

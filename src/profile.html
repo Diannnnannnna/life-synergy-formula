@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile-Life Formula Synergy </title>
+      <!-- Link for FontStyle -->
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Catamaran:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+      <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-BxMc57kVuJbl9JXlMwETr7FpV7XeHv5e1AeuQ4GoXf0+qqd1iyZ8xD63Oe8DJZ5r8wOovWrVZyavU46T2gQQ2g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      />
+      <!-- Link for css -->
+      <link href="./output.css" rel="stylesheet">
+      <!-- Link for script -->
+      <script src="script.js"></script>
+      <script src="https://unpkg.com/lucide@latest"></script>
+      <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="max-w-7xl font-catamaran">
+    <!-- Header -->
+    <header x-data="{ open: false }" class="w-screen relative bg-white py-4 shadow-md z-[1000]">
+        <div class="container mx-auto px-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <img src="assets/logo.png" class="w-10 h-10 md:w-16 md:h-16" />
+                <a href="#" class="text-xl md:text-3xl font-bold leading-none text-black">
+                Life Formula<br />Synergy, Inc.
+                </a>
+            </div>
+            <!-- Nav links -->
+            <nav class="hidden lg:flex text-lg items-center mr-7">
+                <a href="index.html" class="text-lg text-black pl-8 font-light hover:text-[#32B4A6]">Home</a>
+                <a href="about-us.html" class="text-lg text-black pl-8 font-light hover:text-[#32B4A6]">About</a>
+                <a href="index.html?#contact" class="text-lg text-black pl-8 font-light hover:text-[#32B4A6]">Contact</a>
+            
+                <div class="relative pl-8 pb-2 mt-2 group">
+                    <a href="#" class="flex items-center text-lg text-black font-light hover:text-[#32B4A6]">
+                    Shop Now <i data-lucide="chevron-down" class="w-4 h-4 ml-4 text-black hover:text-[#32B4A6]"></i>
+                    </a>
+                    <div class="absolute hidden group-hover:block bg-white w-48 shadow-lg rounded-md z-[1000] p-6 space-y-4 mt-1">
+                        <a href="products.html" class="block font-light text-black hover:text-[#32B4A6]">All Products</a>
+                        <a href="#" class="block text-black font-light hover:text-[#32B4A6]">Wellness Products</a>
+                        <a href="#" class="block text-black font-light hover:text-[#32B4A6]">Health Care</a>
+                        <a href="#" class="block text-black font-light hover:text-[#32B4A6]">Beauty Care</a>
+                        <a href="#" class="block text-black font-light hover:text-[#32B4A6]">Packages</a>
+                        <a href="#" class="block text-black font-light hover:text-[#32B4A6]">Special Product</a>
+                    </div>
+                </div>
+            </nav>
+            <!-- Nav Icons -->
+            <div class="hidden lg:flex gap-11 items-center">
+                <a href="#" class="text-2xl text-black hover:text-[#32B4A6]"><i data-lucide="search"></i></a>
+                <a href="cart.html" class="text-2xl text-black hover:text-[#32B4A6]"><i data-lucide="shopping-cart"></i></a>
+                <!-- Profile -->
+                <div class="relative" x-data="{ open: false }">
+
+                    <!-- Profile Icon Button -->
+                    <a href="#" 
+                    @click.prevent="open = !open" 
+                    class="text-2xl text-black hover:text-[#32B4A6]">
+                        <i data-lucide="user"></i>
+                    </a>
+
+                    <!-- Dropdown Panel -->
+                    <div 
+                        x-show="open"
+                        @click.away="open = false"
+                        x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="opacity-0 translate-y-1"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        x-transition:leave="transition ease-in duration-150"
+                        x-transition:leave-start="opacity-100 translate-y-0"
+                        x-transition:leave-end="opacity-0 translate-y-1"
+                        class="absolute bg-white p-2 shadow-lg rounded z-[1000] pt-4 mt-2 right-0 w-64"
+                    >
+                        <div class="flex gap-2.5 items-center border-b border-gray-300 p-2">
+                            <div class="w-12 h-12 rounded-full bg-[#D9D9D9]"></div>
+                            <div>
+                                <p class="text-base text-nowrap">User Name</p>
+                                <p class="text-sm text-[#9B9B9B] -mt-1">@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-2">
+                            <div class="px-2">
+                                <a href="profile.html" class="block text-black hover:text-[#32B4A6] text-base mb-1">Profile</a>
+                                <a href="profile.html" class="block text-black hover:text-[#32B4A6] text-base mb-1">Orders</a>
+                            </div>
+                            <div class="w-full h-[1px] bg-gray-300 my-2"></div>
+                            <a href="#" class="flex items-center text-black hover:text-[#32B4A6] text-lg">
+                                <i data-lucide="log-out" class="w-4 h-4 text-[#9B9B9B] mr-2"></i>Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Menu Button -->
+            <button @click="open = true" class="lg:hidden text-black text-3xl focus:outline-none">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+        <!-- Mobile Nav -->
+        <div 
+            x-show="open"
+            @click.away="open = false"
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 transform -translate-y-2"
+            x-transition:enter-end="opacity-100 transform translate-y-0"
+            x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100 transform translate-y-0"
+            x-transition:leave-end="opacity-0 transform -translate-y-2"
+            class="absolute top-full left-0 mt-2 w-full px-28 flex flex-col space-y-4 z-[1050]"
+            x-data="{
+                current: window.location.pathname
+            }">
+            <div class="bg-white shadow-lg rounded-md border border-gray-300 w-full p-6 flex flex-col">
+                
+                <a @click="open = false" 
+                href="index.html" 
+                :class="current.includes('index.html') ? 'bg-[#32B4A6] text-white p-2 rounded' : 'text-black p-2 rounded hover:bg-[#c6e2df] hover:text-white'">
+                Home
+                </a>
+        
+                <a @click="open = false" 
+                href="about-us.html"
+                :class="current.includes('about-us.html') ? 'bg-[#32B4A6] text-white p-2 rounded' : 'text-black p-2 rounded hover:bg-[#c6e2df] hover:text-white'">
+                About
+                </a>
+        
+                <a @click="open = false" 
+                href="index.html?#contact"
+                :class="current.includes('index.html?#contact') ? 'bg-[#32B4A6] text-white p-2 rounded' : 'text-black p-2 rounded hover:bg-[#c6e2df] hover:text-white'">
+                Contact
+                </a>
+        
+                <a @click="open = false" 
+                href="products.html"
+                :class="current.includes('products.html') ? 'bg-[#32B4A6] text-white p-2 rounded' : 'text-black p-2 rounded hover:bg-[#c6e2df] hover:text-white'">
+                Shop Now
+                </a>
+        
+                <a @click="open = false" 
+                href="cart.html"
+                :class="current.includes('cart.html') ? 'bg-[#32B4A6] text-white p-2 rounded' : 'text-black p-2 rounded hover:bg-[#c6e2df] hover:text-white'">
+                Cart
+                </a>
+        
+                <a @click="open = false" 
+                href="profile.html"
+                :class="current.includes('profile.html') ? 'bg-[#32B4A6] text-white p-2 rounded' : 'text-black p-2 rounded hover:bg-[#c6e2df] hover:text-white'">
+                Profile
+                </a>
+        
+                <a @click="open = false" 
+                href="#"
+                class="text-black p-2 rounded hover:bg-[#c6e2df] hover:text-white">
+                Logout
+                </a>
+        
+            </div>  
+        </div>
+    </header>
+
+    <!-- Content Section -->
+    <section class="bg-white w-screen bg-cover bg-center" id="profile-view" x-data="{ profileOpen: true, orderOpen: false, currentSection: 'profile' }">
+        <div class="container mx-auto px-20 py-20">
+    
+            <!-- Breadcrumbs -->
+            <nav class="text-base text-[#9B9B9B] font-light">
+                <a href="allproducts.html" class="hover:underline">ALL PRODUCTS</a> /
+                <span class="text-[#32B4A6]">MY ACCOUNT</span>
+            </nav>
+        
+            <div class="grid grid-cols-5 gap-10 mt-8" x-data="sidebarState()" x-init="init()">
+                <!-- Sidebar -->
+                <aside>
+                    <!-- My Account -->
+                    <div class="flex flex-col mb-0.5">
+                        <h4 @click="profileOpen = !profileOpen" class="flex justify-between items-center text-base font-light cursor-pointer">
+                            My Account
+                            <i :class="profileOpen ? 'fa-solid fa-chevron-down rotate-180' : 'fa-solid fa-chevron-down'" class="text-xs text-[#9B9B9B] transition-transform duration-300"></i>
+                        </h4>
+                        <ul x-show="profileOpen" x-transition class="list-none ml-4 pl-4 overflow-hidden">
+                            <li class="mt-4">
+                                <a href="#"  @click.prevent="setSection('profile')" 
+                                :class="currentSection  === 'profile' ? 'text-[#32B4A6]' : 'text-black'" 
+                                class="font-light text-base block hover:text-[#32B4A6]">My Profile</a>
+                            </li>
+                            <li class="mt-4">
+                                <a href="#" @click.prevent="setSection('shipping')" 
+                                :class="currentSection  === 'shipping' ? 'text-[#32B4A6]' : 'text-black'" 
+                                class="font-light text-base block hover:text-[#32B4A6]">Shipping Address</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="h-[0.5px] bg-[#9B9B9B] my-2"></div>
+
+                    <!-- Order History -->
+                    <div class="flex flex-col mb-0.5">
+                        <h4 @click="orderOpen = !orderOpen" class="flex justify-between items-center text-base font-light cursor-pointer">
+                            My Order History
+                            <i :class="orderOpen ? 'fa-solid fa-chevron-down rotate-180' : 'fa-solid fa-chevron-down'" class="text-xs text-[#9B9B9B] transition-transform duration-300"></i>
+                        </h4>
+                        <ul x-show="orderOpen" x-transition class="list-none ml-4 pl-4 overflow-hidden">
+                            <li class="mt-4">
+                                <a href="#" @click.prevent="setSection('orders')"  
+                                :class="currentSection === 'orders' ? 'text-[#32B4A6]' : 'text-black'" 
+                                class="font-light text-base block hover:text-[#32B4A6]">My Orders</a>
+                            </li>
+                            <li class="mt-4">
+                                <a href="#" @click.prevent="setSection('cancellations')" 
+                                :class="currentSection === 'cancellations' ? 'text-[#32B4A6]' : 'text-black'" 
+                                class="font-light text-base block hover:text-[#32B4A6]">My Cancellations</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="h-[0.5px] bg-[#9B9B9B] my-2"></div>
+
+                    <!-- Wishlist -->
+                    <div class="flex flex-col mb-0.5">
+                        <a href="#" @click.prevent="setSection('wishlist')" 
+                        :class="currentSection === 'wishlist' ? 'text-[#32B4A6]' : 'text-black'" 
+                        class="font-light text-base block hover:text-[#32B4A6]">My Wishlist</a>
+                        </h4>
+                    </div>
+                </aside>
+        
+                <!-- Profile Form -->
+                <div x-show="currentSection === 'profile'" x-transition class="col-span-4 p-7 bg-white shadow-md rounded">
+                    <h2 class="text-[#32B4A6] font-medium text-base mb-2.5">EDIT YOUR PROFILE</h2>
+        
+                    <div class="flex gap-5 mb-4">
+                        <div class="flex flex-col flex-1">
+                            <label class="text-base font-light mb-1">First Name</label>
+                            <input type="text" class="rounded bg-[#f4f4f4] text-base p-2 mb-3 border-none outline-none focus:ring-[#32B4A6]" />
+                        </div>
+                        <div class="flex flex-col flex-1">
+                            <label class="text-base font-light mb-1">Last Name</label>
+                            <input type="text" class="rounded bg-[#f4f4f4] text-base p-2 mb-3 border-none outline-none focus:ring-[#32B4A6]" />
+                        </div>
+                        <div class="flex flex-col flex-1">
+                            <label class="text-base font-light mb-1">Gender</label>
+                            <input type="text" class="rounded bg-[#f4f4f4] text-base p-2 mb-3 border-none outline-none focus:ring-[#32B4A6]" />
+                        </div>
+                    </div>
+        
+                    <div class="flex gap-5 mb-4">
+                        <div class="flex flex-col flex-1">
+                            <label class="text-base font-light mb-1">Date Birth</label>
+                            <input type="text" class="rounded bg-[#f4f4f4] text-base p-2 mb-3 border-none outline-none focus:ring-[#32B4A6]" />
+                        </div>
+                        <div class="flex flex-col flex-1">
+                            <label class="text-base font-light mb-1">Email Address</label>
+                            <input type="text" class="rounded bg-[#f4f4f4] text-base p-2 mb-3 border-none outline-none focus:ring-[#32B4A6]" />
+                        </div>
+                        <div class="flex flex-col flex-1">
+                            <label class="text-base font-light mb-1">Contact Number</label>
+                            <input type="text" class="rounded bg-[#f4f4f4] text-base p-2 mb-3 border-none outline-none focus:ring-[#32B4A6]" />
+                        </div>
+                    </div>
+        
+                    <h3 class="text-base font-medium mt-2 mb-1.5">CHANGE PASSWORD</h3>
+                    <p class="text-base font-light text-[#3F3F3F] mb-2">To change your password, please fill in the fields below.</p>
+        
+                    <div class="flex flex-col mb-4">
+                        <label class="text-base font-light mb-1">Current Password <span class="text-[#FC0505]">*</span></label>
+                        <input type="password" class="rounded bg-[#f4f4f4] text-base p-2 mb-3 w-67 border-none outline-none focus:ring-[#32B4A6]" />
+                    </div>
+        
+                    <div class="flex gap-5 mb-4 items-start">
+                        <div class="flex flex-col">
+                            <label class="text-base font-light mb-1">New Password <span class="text-[#FC0505]">*</span></label>
+                            <input type="password" class="rounded bg-[#f4f4f4] text-base p-2 mb-3 w-67 border-none outline-none focus:ring-[#32B4A6]" />
+                        </div>
+                        <div class="bg-[#FFF1C2] text-[#975102] p-5 rounded w-auto text-base">
+                            <p class="mb-2">Your password must have a:</p>
+                            <ul class="list-disc ml-7">
+                                <li>Minimum of 8 characters</li>
+                                <li>Contains at least 1 number</li>
+                                <li>An uppercase and lowercase letters</li>
+                            </ul>
+                        </div>
+                    </div>
+        
+                    <div class="flex flex-col -mt-16 mb-6">
+                        <label class="text-base font-light mb-1">Confirm Password <span class="text-[#FC0505]">*</span></label>
+                        <input type="password" class="rounded bg-[#f4f4f4] text-base p-2 mb-3 w-67 border-none outline-none focus:ring-[#32B4A6]" />
+                    </div>
+        
+                    <button class="bg-[#32B4A6] hover:bg-[#3F3F3F] text-white hover:text-white text-base font-medium rounded px-10 py-2 ml-auto block">Save</button>
+                </div>
+
+                <!-- Shipping Address Section -->
+                <div x-show="currentSection === 'shipping'" x-transition class="col-span-4 p-7 bg-white shadow-md rounded">
+
+                    <h2 class="text-[#32B4A6] text-base mb-2.5">EDIT SHIPPING ADDRESS</h2>
+
+                    <div class="flex flex-col mb-4">
+                        <label class="text-base font-light mb-1">Address</label>
+                        <input type="text" class="rounded bg-[#f4f4f4] text-base p-2 mb-3 border-none outline-none focus:ring-[#32B4A6]" />
+                    </div>
+
+                    <div class="flex gap-5 mb-4">
+                        <div class="flex flex-col flex-1">
+                            <label class="text-base font-light mb-1">Region</label>
+                            <input type="text" class="rounded bg-[#f4f4f4]  text-base p-2 mb-3 border-none outline-none focus:ring-[#32B4A6]" />
+                        </div>
+                        <div class="flex flex-col flex-1">
+                            <label class="text-base font-light mb-1">City</label>
+                            <input type="text" class="rounded bg-[#f4f4f4]  text-base p-2 mb-3 border-none outline-none focus:ring-[#32B4A6]" />
+                        </div>
+                        <div class="flex flex-col flex-1">
+                            <label class="text-base font-light mb-1">Barangay</label>
+                            <input type="text" class="rounded bg-[#f4f4f4]  text-base p-2 mb-3 border-none outline-none focus:ring-[#32B4A6]" />
+                        </div>
+                    </div>
+
+                    <div class="flex gap-5 mb-4">
+                        <div class="flex flex-col">
+                            <label class="text-base font-light mb-1">Zip Code</label>
+                            <input type="text" class="rounded bg-[#f4f4f4] w-67  text-base p-2 mb-3 border-none outline-none focus:ring-[#32B4A6]" />
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-base font-light mb-1">Contact Number</label>
+                            <input type="text" class="rounded bg-[#f4f4f4] w-67  text-base p-2 mb-3 border-none outline-none focus:ring-[#32B4A6]" />
+                        </div>
+                    </div>
+                    <button class="bg-[#32B4A6] hover:bg-[#3F3F3F] text-white hover:text-white text-base font-medium rounded px-10 py-2 ml-auto block">Save</button>
+                </div>
+
+                <!-- Order History -->
+                <div x-show="currentSection === 'orders'" x-transition class="col-span-4">
+                    <!-- Active Orders -->
+                    <div class="p-7 bg-white mb-8 shadow-md rounded"  @click.prevent="setSection('trackOrder')">
+                        <div class="flex items-center justify-between pb-2.5">
+                            <img src="assets/product1.png" alt="Product Image" class="w-24 h-24 rounded">
+                            <div class="flex-1 pl-2.5 mt-0.5">
+                                <p class="text-base font-light">Product Name</p>
+                                <p class="text-base font-light text-gray-500 mt-2">Type of Product</p>
+                                <p class="text-base font-light mt-2">Qty: 1</p>
+                            </div>
+                            <span class="mr-33.5 text-base text-teal-500 font-medium">In Transit</span>
+                            <div class="text-base text-gray-500 text-left">
+                                <p class="font-medium">Expected Delivery</p>
+                                <p class="mt-2 font-light">24/02/2025</p>
+                            </div>
+                        </div>
+                        <div class="h-[0.5px] bg-gray-400 w-full mt-2"></div>
+                        <div class="flex justify-between mt-3">
+                            <div>
+                                <p class="text-base font-light mb-1.5">Order Number:</p>
+                                <p class="text-base font-light mb-1.5">Order Date:</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="product-price font-medium text-teal-500  text-base mb-11.5">₱ 0.00</p>
+                                <button class="bg-gray-100 hover:bg-gray-800 hover:text-white border-none text-base font-medium rounded px-10 py-2 ml-auto block">Cancel Order</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Past Orders -->
+                    <div class="p-7 bg-white shadow-md rounded space-y-6">
+                        <div class="flex items-center gap-2">
+                            <p class="text-base font-light">Select all the items you wish to return.</p>
+                            <input type="checkbox" id="return-all" class="ml-auto w-4 h-4">
+                            <label for="return-all" class="text-base font-light">Return all Items</label>
+                        </div>
+
+                        <!-- Items -->
+                        <div class="space-y-6">
+                            <!-- Item 1 -->
+                            <div class="flex items-center gap-4">
+                                <input type="checkbox" class="w-4 h-4">
+                                <img src="assets/product1.png" alt="Product Image" class="w-24 h-24 rounded">
+                                <div class="flex-1">
+                                    <p class="text-bas font-light">Product Name</p>
+                                    <p class="text-base font-light text-gray-500">Type of Product</p>
+                                </div>
+                                <div class="flex gap-30">
+                                    <p class="text-base font-light">Order Number: t652442r4852</p>
+                                    <p class="text-base font-light">Qty: 1</p>
+                                    <p class="product-price text-base text-teal-500 font-medium">₱ 0.00</p>
+                                </div>
+                            </div>
+                            <div class="h-[0.5px] bg-gray-400"></div>
+
+                            <!-- Item 2 -->
+                            <div class="flex items-center gap-4">
+                                <input type="checkbox" class="w-4 h-4">
+                                <img src="assets/product1.png" alt="Product Image" class="w-24 h-24 rounded">
+                                <div class="flex-1">
+                                    <p class="text-bas font-light">Product Name</p>
+                                    <p class="text-base font-light text-gray-500">Type of Product</p>
+                                </div>
+                                <div class="flex gap-30">
+                                    <p class="text-base font-light">Order Number: t652442r4852</p>
+                                    <p class="text-base font-light">Qty: 1</p>
+                                    <p class="product-price text-base text-teal-500 font-medium">₱ 0.00</p>
+                                </div>
+                            </div>
+                            <div class="h-[0.5px] bg-gray-400"></div>
+
+                            <!-- Item 3 -->
+                            <div class="flex items-center gap-4">
+                                <input type="checkbox" class="w-4 h-4">
+                                <img src="assets/product1.png" alt="Product Image" class="w-24 h-24 rounded">
+                                <div class="flex-1">
+                                    <p class="text-bas font-light">Product Name</p>
+                                    <p class="text-base font-light text-gray-500">Type of Product</p>
+                                </div>
+                                <div class="flex gap-30">
+                                    <p class="text-base font-light">Order Number: t652442r4852</p>
+                                    <p class="text-base font-light">Qty: 1</p>
+                                    <p class="product-price text-base text-teal-500 font-medium">₱ 0.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cancel Orders Section -->
+                <div x-show="currentSection === 'cancellations'" x-transition class="col-span-4">
+
+                    <!-- Cancel Note -->
+                    <div class="w-full p-7 flex gap-4 bg-white shadow-md rounded mb-7">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9b9b9b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-truck-icon lucide-truck"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+                        <div class="flex flex-col mt-[-7px]">
+                            <p class="text-base font-medium"><span>Date</span> Delivery Cancelled</p>
+                            
+                            <p class="text-base font-light text-[#9B9B9B] mt-1">Your Package delivery was cancelled</p>
+                        </div>
+                    </div>
+
+                    <!-- Cancel Order Card -->
+                    <div class="w-full p-7 bg-white shadow-md rounded mb-7">
+                        <div class="flex items-center justify-between pb-2.5">
+                            <img src="assets/product1.png" alt="Product Image" class="w-24 h-24 rounded">
+                            <div class="flex-1 pl-2.5 mt-0.5">
+                                <p class="text-base font-light">Product Name</p>
+                                <p class="text-base font-light text-gray-500 mt-2">Type of Product</p>
+                                <p class="text-base font-light mt-2">Qty: 1</p>
+                            </div>
+                            <span class="mr-33.5 text-base text-teal-500 font-medium">Cancelled</span>
+                            <div class="text-base text-gray-500 text-left">
+                                <p class="font-medium">Expected Delivery</p>
+                                <p class="mt-2 font-light">24/02/2025</p>
+                            </div>
+                        </div>
+                        <div class="h-[0.5px] bg-gray-400 w-full mt-2"></div>
+                        <div class="flex justify-between mt-3">
+                            <div>
+                                <p class="text-base font-light mb-1.5">Order Number:</p>
+                                <p class="text-base font-light mb-1.5">Order Date:</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="product-price font-medium text-teal-500  text-base mb-11.5">₱ 0.00</p>
+                                <button class="bg-gray-100 hover:bg-gray-800 hover:text-white border-none text-base font-medium rounded px-10 py-2 ml-auto block">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Another Cancel -->
+                    <!-- Cancel Note -->
+                    <div class="w-full p-7 flex gap-4 bg-white shadow-md rounded mb-7">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9b9b9b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-truck-icon lucide-truck"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+                        <div class="flex flex-col mt-[-7px]">
+                            <p class="text-base font-medium"><span>Date</span> Delivery Cancelled</p>
+                            
+                            <p class="text-base font-light text-[#9B9B9B] mt-1">Your Package delivery was cancelled</p>
+                        </div>
+                    </div>
+
+                    <div class="w-full p-7 bg-white shadow-md rounded mb-7">
+                        <div class="flex items-center justify-between pb-2.5">
+                            <img src="assets/product1.png" alt="Product Image" class="w-24 h-24 rounded">
+                            <div class="flex-1 pl-2.5 mt-0.5">
+                                <p class="text-base font-light">Product Name</p>
+                                <p class="text-base font-light text-gray-500 mt-2">Type of Product</p>
+                                <p class="text-base font-light mt-2">Qty: 1</p>
+                            </div>
+                            <span class="mr-33.5 text-base text-teal-500 font-medium">Cancelled</span>
+                            <div class="text-base text-gray-500 text-left">
+                                <p class="font-medium">Expected Delivery</p>
+                                <p class="mt-2 font-light">24/02/2025</p>
+                            </div>
+                        </div>
+                        <div class="h-[0.5px] bg-gray-400 w-full mt-2"></div>
+                        <div class="flex justify-between mt-3">
+                            <div>
+                                <p class="text-base font-light mb-1.5">Order Number:</p>
+                                <p class="text-base font-light mb-1.5">Order Date:</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="product-price font-medium text-teal-500  text-base mb-11.5">₱ 0.00</p>
+                                <button class="bg-gray-100 hover:bg-gray-800 hover:text-white border-none text-base font-medium rounded px-10 py-2 ml-auto block">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wishlist Section -->
+                <div x-show="currentSection === 'wishlist'" x-transition class="col-span-4 flex flex-col mb-2.5">
+
+                    <div class="p-7 bg-white shadow-md rounded">
+
+                        <h2 class="text-[#32B4A6] text-base mb-1.5 flex items-center gap-2">
+                            MY WISHLIST
+                            <i class="fa-solid fa-heart"></i>
+                        </h2>
+
+                        <!-- Wishlist Item -->
+                        <div class="flex mt-6 items-start">
+                            <input type="checkbox" class="self-center mr-3" />
+                            <img src="assets/product1.png" alt="Product Image" class="w-24 h-24 rounded ml-px"/>
+                            <div class="flex-1 ml-3.5 -mt-0.5">
+                                <p class="text-base font-light">Product Name</p>
+                                <p class="text-base font-light text-[#9B9B9B]">Type of Product</p>
+                            </div>
+                            <div class="flex gap-10 mt-5.5 ml-auto">
+                                <p class="text-base font-light">Date added on</p>
+                                <p class="product-price font-medium text-base text-[#32B4A6]">₱ 0.00</p>
+                                <p class="text-[#9B9B9B] text-base font-light">In Stock</p>
+                                <button class="bg-gray-100 -mt-2 hover:bg-gray-800 hover:text-white border-none text-base font-medium rounded px-10 py-2 block">Add to Cart</button>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9b9b9b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="h-[0.5px] bg-[#9B9B9B] w-full mt-[15px] mb-[-12px]"></div>
+
+                        <!-- Wishlist Item -->
+                        <div class="flex mt-6 items-start">
+                            <input type="checkbox" class="self-center mr-3" />
+                            <img src="assets/product1.png" alt="Product Image" class="w-24 h-24 rounded ml-px"/>
+                            <div class="flex-1 ml-3.5 -mt-0.5">
+                                <p class="text-base font-light">Product Name</p>
+                                <p class="text-base font-light text-[#9B9B9B]">Type of Product</p>
+                            </div>
+                            <div class="flex gap-10 mt-5.5 ml-auto">
+                                <p class="text-base font-light">Date added on</p>
+                                <p class="product-price font-medium text-base text-[#32B4A6]">₱ 0.00</p>
+                                <p class="text-[#9B9B9B] text-base font-light">In Stock</p>
+                                <button class="bg-gray-100 -mt-2 hover:bg-gray-800 hover:text-white border-none text-base font-medium rounded px-10 py-2 block">Add to Cart</button>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9b9b9b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="h-[0.5px] bg-[#9B9B9B] w-full mt-[15px] mb-[-12px]"></div>
+
+                        <!-- Wishlist Item -->
+                        <div class="flex mt-6 items-start">
+                            <input type="checkbox" class="self-center mr-3" />
+                            <img src="assets/product1.png" alt="Product Image" class="w-24 h-24 rounded ml-px"/>
+                            <div class="flex-1 ml-3.5 -mt-0.5">
+                                <p class="text-base font-light">Product Name</p>
+                                <p class="text-base font-light text-[#9B9B9B]">Type of Product</p>
+                            </div>
+                            <div class="flex gap-10 mt-5.5 ml-auto">
+                                <p class="text-base font-light">Date added on</p>
+                                <p class="product-price font-medium text-base text-[#32B4A6]">₱ 0.00</p>
+                                <p class="text-[#9B9B9B] text-base font-light">In Stock</p>
+                                <button class="bg-gray-100 -mt-2 hover:bg-gray-800 hover:text-white border-none text-base font-medium rounded px-10 py-2 block">Add to Cart</button>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9b9b9b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Track Order -->
+                <div x-show="currentSection === 'trackOrder'" x-transition class="col-span-4">
+                    <!-- Active Orders -->
+                    <div class="p-7 bg-white mb-8 shadow-md rounded">
+                        <div class="flex items-center justify-between pb-2.5">
+                            <img src="assets/product1.png" alt="Product Image" class="w-24 h-24 rounded">
+                            <div class="flex-1 pl-2.5 mt-0.5">
+                                <p class="text-base font-light">Product Name</p>
+                                <p class="text-base font-light text-gray-500 mt-2">Type of Product</p>
+                                <p class="text-base font-light mt-2">Qty: 1</p>
+                            </div>
+                            <span class="mr-33.5 text-base text-teal-500 font-medium">In Transit</span>
+                            <div class="text-base text-gray-500 text-left">
+                                <p class="font-medium">Expected Delivery</p>
+                                <p class="mt-2 font-light">24/02/2025</p>
+                            </div>
+                        </div>
+                        <div class="h-[0.5px] bg-gray-400 w-full mt-2"></div>
+                        <div class="flex justify-between mt-3">
+                            <div>
+                                <p class="text-base font-light mb-1.5">Order Number:</p>
+                                <p class="text-base font-light mb-1.5">Order Date:</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="product-price font-medium text-teal-500  text-base mb-11.5">₱ 0.00</p>
+                            </div>
+                        </div>
+
+                        <!-- Tracking Steps -->
+                        <div class="grid grid-cols-4 gap-8">
+                            <!-- Progress Step 1 -->
+                            <div class="flex flex-col items-center w-full">
+                                <div class="w-full h-2.5 bg-neutral-300 rounded relative mb-5">
+                                    <div class="w-full h-full bg-teal-500 rounded"></div>
+                                </div>
+                                <div class="flex items-center gap-3 relative">
+                                    <div class="w-5 h-5 rounded-full bg-teal-500 -mt-2"></div>
+                                    <div class="text-base font-light -mt-2.5">Pick Up</div>
+                                </div>
+                            </div>
+
+                            <!-- Progress Step 2 -->
+                            <div class="flex flex-col items-center w-full">
+                                <div class="w-full h-2.5 bg-neutral-300 rounded relative mb-5">
+                                    <div class="w-3/5 h-full bg-teal-500 rounded"></div>
+                                </div>
+                                <div class="flex items-center gap-3 relative">
+                                    <div class="w-5 h-5 rounded-full bg-teal-500 -mt-2"></div>
+                                    <div class="text-base font-light -mt-2.5">Preparing</div>
+                                </div>
+                            </div>
+
+                            <!-- Progress Step 3 -->
+                            <div class="flex flex-col items-center w-full">
+                                <div class="w-full h-2.5 bg-neutral-300 rounded relative mb-5"></div>
+                                <div class="flex items-center gap-3 relative">
+                                    <div class="w-5 h-5 rounded-full border-[2.5px] border-neutral-500 bg-transparent -mt-2"></div>
+                                    <div class="text-base font-light -mt-2.5">In Transit</div>
+                                </div>
+                            </div>
+
+                            <!-- Progress Step 4 -->
+                            <div class="flex flex-col items-center w-full">
+                                <div class="w-full h-2.5 bg-neutral-300 rounded relative mb-5"></div>
+                                <div class="flex items-center gap-3 relative">
+                                    <div class="w-5 h-5 rounded-full border-[2.5px] border-neutral-500 bg-transparent -mt-2"></div>
+                                    <div class="text-base font-light -mt-2.5">In Transit</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="h-[0.5px] bg-gray-400 w-full mt-6"></div>
+
+                        <!-- Shipment Process -->
+                        <div class="mt-3 mb-2.5">
+                            <p class="text-base font-normal">Shipment Process</p>
+
+                            <!-- Item -->
+                            <div class="flex items-start gap-2.5 relative pb-5 mt-1.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9b9b9b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-truck-icon lucide-truck"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+                                <div class="flex flex-col ml-2.5 -mb-4.5">
+                                    <div class="text-base font-light my-0.5">Date and time</div>
+                                    <div class="text-base font-light mt-1.5">Status</div>
+                                </div>
+                                <div class="absolute left-3 top-8 h-[40%] w-px bg-neutral-300"></div>
+                            </div>
+
+                            <!-- Last Item -->
+                            <div class="flex items-start gap-2.5 relative pb-0 mt-1.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9b9b9b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-truck-icon lucide-truck"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+                                <div class="flex flex-col ml-2.5 -mb-4.5">
+                                    <div class="text-base font-light my-0.5">Date and time</div>
+                                    <div class="text-base font-light mt-1.5">Status</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>       
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <section class="bg-[#3F3F3F] w-screen">
+        <div class="container mx-auto px-20 pt-20 pb-4">
+            <div class="grid grid-cols-2 gap-8">
+
+                <!-- Left Side -->
+                <div>
+                    <div class="flex items-center gap-2">
+                        <img src="assets/logo.png" class="w-16 h-16" />
+                        <a href="#" class="text-3xl font-bold leading-none text-white">
+                        Life Formula<br />Synergy, Inc.
+                        </a>
+                    </div>
+                        <p class="text-white mt-2 text-base font-light">Your Health, Your Wealth.</p>
+                        <p class="text-white mt-6 text-base w-64 leading-[1.3] font-light">G5 ADB Avenue Tower, ADB Avenue, Ortigas Center, Pasig, Philippines</p>
+                        <h6 class="text-white mt-[23px] text-lg font-medium">STAY CONNECTED</h6>
+                        <div class="mt-[21px] flex items-center gap-[23px]">
+                        <a href="#"><i class="fa-brands fa-facebook-f text-white text-[22px]"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube text-white text-[22px]"></i></a>
+                    </div>
+                </div>
+
+                <!-- Right Side -->
+                <div class="grid grid-cols-4 mt-1.5 -ml-42 gap-4">
+            
+                    <!-- COMPANY -->
+                    <div class="flex flex-col">
+                        <h4 class="text-white text-lg mb-2.5 font-medium">COMPANY</h4>
+                        <a href="#" class="text-white text-base mb-1.5 font-light">About</a>
+                        <a href="#" class="text-white text-base mb-1.5 font-light">Contact</a>
+                    </div>
+            
+                    <!-- SHOP -->
+                    <div class="flex flex-col">
+                        <h4 class="text-white text-[18px] mb-2.5 font-medium">SHOP</h4>
+                        <a href="#" class="text-white text-base mb-1.5 font-light">Bestsellers</a>
+                        <a href="#" class="text-white text-base mb-1.5 font-light">Ozonizer 2c</a>
+                        <a href="#" class="text-white text-base mb-1.5 font-light">U White</a>
+                        <a href="#" class="text-white text-base mb-1.5 font-light">Ozonizer Necklace</a>
+                        <a href="#" class="text-white text-base mb-1.5 font-light">Premiera Plunge</a>
+                        <a href="#" class="text-white text-base mb-1.5 font-light">Coffee</a>
+                        <a href="#" class="text-white text-base mb-1.5 font-light">Auto Control Ozonizer</a>
+                    </div>
+            
+                    <!-- SUPPORT -->
+                    <div class="flex flex-col">
+                        <h4 class="text-white text-lg mb-2.5 font-medium">SUPPORT</h4>
+                        <a href="#" class="text-white text-base mb-1.5 font-light">Privacy Policy</a>
+                        <a href="#" class="text-white text-base mb-1.5 font-light leading-tight">Terms &<br />Conditions</a>
+                    </div>
+            
+                    <!-- PAYMENT -->
+                    <div>
+                        <h4 class="text-white text-lg mb-2.5 font-medium">PAYMENT METHODS</h4>
+                        <div class="grid grid-cols-5 gap-2">
+                            <img src="assets/mastercard.png" class="w-7 h-5 mt-2" alt="MasterCard" />
+                            <img src="assets/paymaya.png" class="w-8 h-9" alt="Visa" />
+                            <img src="assets/grabpay.png" class="w-16 h-9" alt="GrabPay" />
+                            <img src="assets/unionpay.png" class="w-7.5 h-8" alt="UnionPay" />
+                            <img src="assets/shopeepay.png" class="w-9 h-7.5" alt="Shopee" />
+                            <img src="assets/palawanpay.png" class="w-8 h-7.5" alt="Palawan" />
+                            <img src="assets/gcash.png" class="w-7.5 h-6.5" alt="GCash" />
+                            <img src="assets/wepay.png" class="w-7.5 h-6.5" alt="WePay" />
+                            <img src="assets/alipay.png" class="w-7.5 h-6.5" alt="Alipay" />
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            <!-- Bottom -->
+            <div class="w-full text-center pt-6 border-t border-white mt-6 text-base font-light text-white">
+            Copyright © 2025 Life Formula Synergy, Inc. All Rights Reserved.
+            </div>
+
+        </div>
+    </section>    
+    
+</body>
+<script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</html>
